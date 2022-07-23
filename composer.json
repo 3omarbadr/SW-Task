@@ -1,0 +1,19 @@
+{
+    "name": "scandiweb/test-task",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App",
+            "TestTask\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "3omarbadr",
+            "email": "omarbadr167@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "symfony/var-dumper": "^6.1"
+    }
+}
