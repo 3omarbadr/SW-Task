@@ -1,6 +1,6 @@
 <?php
+
+use App\Controllers\HomeController;
 use TestTask\Http\Route;
 
-Route::get('/', function(){
-return 'hello';
-});
+Route::get('/',[HomeController::class, 'index']);
