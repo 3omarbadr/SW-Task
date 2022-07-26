@@ -2,10 +2,12 @@
 
 namespace App\Controllers;
 
+use TestTask\View\View;
+
 class HomeController
 {
     public function index()
     {
-        echo 'home';
+        return View::make('home');
     }
 }

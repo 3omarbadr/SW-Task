@@ -4,12 +4,15 @@ namespace TestTask\Http;
 
 use TestTask\Http\Request;
 use TestTask\Http\Response;
+use TestTask\View\View;
 
 class Route
 {
-    public function __construct(protected Request $request, protected Response $response){}
-    
-    public static array $routes = [];
+    protected static array $routes = [];
+
+
+    public function __construct(public Request $request, public Response $response){}
+
 
     public static function get($route, $action)
     {
@@ -25,26 +28,20 @@ class Route
     {
         $path = $this->request->path();
         $method = $this->request->method();
+
         $action = self::$routes[$method][$path] ?? false;
 
-        // if (!array_key_exists($path, self::$routes[$method])) {
-        //     $this->response->setStatusCode(404);
-        //     View::makeError('404');
-        // }
-
-        if (!$action) {
-            return;
+        if (!array_key_exists($path, self::$routes[$method])) {
+            View::makeError('404');
         }
+
 
         if (is_callable($action)) {
             call_user_func_array($action, []);
         }
 
         if (is_array($action)) {
-            $controller = new $action[0];
-            $method = $action[1];
-
-            call_user_func_array([$controller, $method], []);
+            call_user_func_array([new $action[0], $action[1]], []);
         }
     }
 }
