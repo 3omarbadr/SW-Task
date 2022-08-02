@@ -9,9 +9,9 @@ class Response
         http_response_code($code);
     }
 
-    public function back()
+    public function back($route)
     {
-        header('Location:' . $_SERVER['HTTP_REFERER']);
+        header('Location:' . $route);
 
         return $this;
     }

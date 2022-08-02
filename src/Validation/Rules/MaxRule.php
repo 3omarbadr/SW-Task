@@ -1,4 +1,5 @@
 <?php
+
 namespace TestTask\Validation\Rules;
 
 use TestTask\Validation\Rules\Contracts\Rule;
@@ -6,7 +7,9 @@ use TestTask\Validation\Rules\Contracts\Rule;
 class MaxRule implements Rule
 {
 
-    public function __construct(protected int $max){}
+    public function __construct(protected int $max)
+    {
+    }
 
     public function apply($field, $value, $data)
     {

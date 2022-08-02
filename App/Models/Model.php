@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use TestTask\Database\Managers\MySQLManager;
 use TestTask\Support\Str;
 
 

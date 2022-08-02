@@ -4,7 +4,6 @@ namespace TestTask\Validation;
 
 use TestTask\Validation\Rules\MaxRule;
 use TestTask\Validation\Rules\MinRule;
-use TestTask\Validation\Rules\EmailRule;
 use TestTask\Validation\Rules\UniqueRule;
 use TestTask\Validation\Rules\BetweenRule;
 use TestTask\Validation\Rules\AlphaNumRule;
@@ -19,7 +18,6 @@ trait RulesMapper
         'max' => MaxRule::class,
         'min' => MinRule::class,
         'between' => BetweenRule::class,
-        'email' => EmailRule::class,
         'confirmed' => ConfirmedRule::class,
         'unique' => UniqueRule::class,
     ];

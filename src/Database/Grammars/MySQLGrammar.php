@@ -48,6 +48,6 @@ class MySQLGrammar
 
     public static function buildDeleteQuery()
     {
-        return 'DELETE FROM ' . Model::getTableName() . ' WHERE ID = ?';
+        return 'DELETE FROM ' . Model::getTableName() . ' WHERE id = ?';
     }
 }

@@ -85,9 +85,9 @@ if (!function_exists('view')) {
 }
 
 if (!function_exists('back')) {
-    function back()
+    function back($route)
     {
-        return (new Response())->back();
+        return (new Response())->back($route);
     }
 }
 
@@ -104,28 +104,6 @@ if (!function_exists('app')) {
     }
 }
 
-if (!function_exists('request')) {
-    function request($key = null)
-    {
-        $instance = new Request();
-
-        if (!$instance) {
-            return new Request();
-        }
-
-        if ($key) {
-            if (is_string($key)) {
-                return $instance->get($key);
-            }
-
-            if (is_array($key)) {
-                return $instance->only($key);
-            }
-        }
-
-        return $instance;
-    }
-}
 
 if (!function_exists('validator')) {
     function validator()
@@ -134,12 +112,6 @@ if (!function_exists('validator')) {
     }
 }
 
-if (!function_exists('bcrypt')) {
-    function bcrypt($data)
-    {
-        return Hash::make($data);
-    }
-}
 
 if (!function_exists('database_path')) {
     function database_path()
@@ -148,11 +120,5 @@ if (!function_exists('database_path')) {
     }
 }
 
-if (!function_exists('old')) {
-    function old($key)
-    {
-        if (app()->session->hasFlash('old')) {
-            return app()->session->getFlash('old')[$key];
-        }
-    }
-}
+
+

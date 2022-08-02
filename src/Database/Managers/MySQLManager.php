@@ -12,16 +12,21 @@ class MySQLManager implements DatabaseManager
 
     public function connect(): \PDO
     {
-        if (!self::$instance) {
+        try {
             self::$instance = new \PDO(env('DB_DRIVER') . ':host=' . env('DB_HOST') . ';dbname=' . env('DB_DATABASE'), env('DB_USERNAME'), env('DB_PASSWORD'));
-        }
+            self::$instance->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
 
-        return self::$instance;
+            return self::$instance;
+        } catch (\PDOException $e) {
+            $error = $e->getMessage();
+            echo "<div class='alert'>$error</div>";
+            die();
+        }
     }
 
     public function query(string $query, $values = [])
     {
-        $stmt = self::$instance->prepare($query);
+        $stmt = self::connect()->prepare($query);
 
         for ($i = 1; $i <= count($values); $i++) {
             $stmt->bindValue($i, $values[$i - 1]);
@@ -36,7 +41,7 @@ class MySQLManager implements DatabaseManager
     {
         $query = MySQLGrammar::buildSelectQuery($columns, $filter);
 
-        $stmt = Self::$instance->prepare($query);
+        $stmt = self::connect()->prepare($query);
 
         if ($filter) {
             $stmt->bindValue(1, $filter[2]);

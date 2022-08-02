@@ -7,9 +7,11 @@ use TestTask\Validation\Rules\Contracts\Rule;
 class UniqueRule implements Rule
 {
 
-    public function __construct(protected $table, protected $column){}
+    public function __construct(protected $table, protected $column)
+    {
+    }
 
-    public function apply($field, $value, $data =[])
+    public function apply($field, $value, $data = [])
     {
         return !(app()->db->raw("SELECT * FROM {$this->table} WHERE {$this->column} = ?", [$value]));
     }

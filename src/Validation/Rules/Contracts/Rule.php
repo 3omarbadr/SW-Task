@@ -1,4 +1,5 @@
 <?php
+
 namespace TestTask\Validation\Rules\Contracts;
 
 interface Rule

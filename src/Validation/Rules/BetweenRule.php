@@ -7,7 +7,9 @@ use TestTask\Validation\Rules\Contracts\Rule;
 
 class BetweenRule implements Rule
 {
-    public function __construct(protected $min, protected $max){}
+    public function __construct(protected $min, protected $max)
+    {
+    }
 
     public function apply($field, $value, $data = [])
     {

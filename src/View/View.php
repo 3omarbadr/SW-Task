@@ -13,7 +13,6 @@ class View
         echo str_replace('{{content}}', $viewContent, $baseContent);
     }
 
-
     protected static function getBaseContent()
     {
         ob_start();

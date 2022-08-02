@@ -7,7 +7,9 @@ use TestTask\Database\Managers\Contracts\DatabaseManager;
 
 class DB
 {
-    public function __construct( protected DatabaseManager $manager){}
+    public function __construct(protected DatabaseManager $manager)
+    {
+    }
 
     public function init()
     {

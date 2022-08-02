@@ -11,8 +11,9 @@ class Route
     protected static array $routes = [];
 
 
-    public function __construct(public Request $request, public Response $response){}
-
+    public function __construct(public Request $request, public Response $response)
+    {
+    }
 
     public static function get($route, $action)
     {
